@@ -375,6 +375,36 @@
     updateButtons();
   }
 
+  function initScrollCues() {
+    var cues = document.querySelectorAll('.scroll-cue[href^="#"]');
+    cues.forEach(function (cue) {
+      cue.addEventListener('click', function (event) {
+        var target = document.querySelector(cue.getAttribute('href'));
+        if (!target) return;
+
+        event.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  }
+
+  function initRsvpClickAnimation() {
+    var button = document.querySelector('.rsvp-btn');
+    if (!button) return;
+
+    function pulse() {
+      button.classList.remove('is-clicking');
+      void button.offsetWidth;
+      button.classList.add('is-clicking');
+      window.setTimeout(function () {
+        button.classList.remove('is-clicking');
+      }, 520);
+    }
+
+    button.addEventListener('pointerdown', pulse);
+    button.addEventListener('click', pulse);
+  }
+
   function startPageAnimations() {
     if (startPageAnimations.hasRun) return;
     startPageAnimations.hasRun = true;
@@ -390,6 +420,8 @@
     preloadPageAssets();
     initMusicToggle(startPageAnimations);
     initSectionNavigation();
+    initScrollCues();
+    initRsvpClickAnimation();
   });
 
 })();

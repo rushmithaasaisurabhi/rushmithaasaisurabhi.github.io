@@ -603,6 +603,7 @@ body.animations-paused #hero .hero-card {
 
 /* ── RSVP button (themed) ── */
 .rsvp-btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -619,13 +620,35 @@ body.animations-paused #hero .hero-card {
   border: 1.5px solid var(--gold);
   border-radius: 4px;
   box-shadow: 0 0 0 1px rgba(212,168,67,0.4), 0 6px 18px rgba(60,30,0,0.12);
-  transition: background-color 0.25s ease, color 0.25s ease, transform 0.15s ease;
+  overflow: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
 }
+
+.rsvp-btn::after {
+  content: '';
+  position: absolute;
+  inset: -45%;
+  background: radial-gradient(circle, rgba(243, 209, 115, 0.42), transparent 52%);
+  opacity: 0;
+  transform: scale(0.55);
+  pointer-events: none;
+}
+
 .rsvp-btn:hover,
 .rsvp-btn:focus-visible {
   background: var(--gold);
   color: #fff;
   transform: translateY(-1px);
+}
+
+.rsvp-btn:active,
+.rsvp-btn.is-clicking {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 0 0 1px rgba(212,168,67,0.52), 0 0 24px rgba(201, 154, 55, 0.32);
+}
+
+.rsvp-btn.is-clicking::after {
+  animation: rsvpClickGlow 0.52s ease-out both;
 }
 
 .directions-link {
@@ -909,6 +932,8 @@ body.animations-paused #hero .hero-card {
   text-transform: uppercase;
   box-shadow: 0 10px 28px rgba(64, 29, 13, 0.12);
   animation: bob 1.85s ease-in-out infinite;
+  opacity: 1;
+  visibility: visible;
   position: relative;
   z-index: 3;
   flex-shrink: 0;
@@ -931,6 +956,17 @@ body.animations-paused #hero .hero-card {
 @keyframes bob {
   0%, 100% { transform: translateY(0); }
   50%       { transform: translateY(6px); }
+}
+
+@keyframes rsvpClickGlow {
+  0% {
+    opacity: 0.75;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.16);
+  }
 }
 
 /* ════════════════════════════════════════════
