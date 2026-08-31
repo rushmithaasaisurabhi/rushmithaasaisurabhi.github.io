@@ -580,6 +580,17 @@ body.animations-paused #hero .hero-card {
   text-transform: none;
 }
 
+.lunch-note {
+  margin-top: clamp(0.3rem, 1.6vw, 0.6rem);
+  color: var(--red-accent);
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 3.4vw, 1.35rem);
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+}
+
 .venue-block {
   display: flex;
   flex-direction: column;
