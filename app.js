@@ -8,6 +8,32 @@
 (function () {
   'use strict';
 
+  /* ── Warm assets while the sound prompt is visible ── */
+  function preloadPageAssets() {
+    var assetUrls = [
+      'assets/seemantham-main-bg.jpg',
+      'assets/seemantham-bg.jpg',
+      'assets/ganesh.svg',
+      'assets/rs-monogram.png',
+      'assets/leaves-vines.png',
+      'assets/footprints.png',
+      'assets/couple.png'
+    ];
+
+    assetUrls.forEach(function (url) {
+      var image = new Image();
+      image.decoding = 'async';
+      image.src = url;
+      if (image.decode) image.decode().catch(function () {});
+    });
+
+    var audio = document.getElementById('ceremony-music');
+    if (audio) {
+      audio.preload = 'auto';
+      audio.load();
+    }
+  }
+
   /* ── Letter reveal for invitation text ── */
   function initLetterAnimations() {
     var targets = document.querySelectorAll('.letter-animate');
@@ -134,7 +160,8 @@
       { cls: 'leaf',     w: 14, h: 20 }
     ];
 
-    var totalPetals = 36;
+    var isSmallScreen = window.matchMedia && window.matchMedia('(max-width: 640px)').matches;
+    var totalPetals = isSmallScreen ? 14 : 22;
 
     for (var i = 0; i < totalPetals; i++) {
       (function (idx) {
@@ -161,7 +188,7 @@
   }
 
   /* ── Tap-to-play background music with a gentle synthesized fallback ── */
-  function initMusicToggle() {
+  function initMusicToggle(onConsentChoice) {
     var button = document.querySelector('.music-toggle');
     var audio = document.getElementById('ceremony-music');
     var consent = document.querySelector('.sound-consent');
@@ -252,6 +279,7 @@
     }
 
     function hideConsent() {
+      if (typeof onConsentChoice === 'function') onConsentChoice();
       if (!consent) return;
       consent.classList.add('is-hidden');
       consent.setAttribute('aria-hidden', 'true');
@@ -347,13 +375,20 @@
     updateButtons();
   }
 
-  /* ── Init ── */
-  document.addEventListener('DOMContentLoaded', function () {
+  function startPageAnimations() {
+    if (startPageAnimations.hasRun) return;
+    startPageAnimations.hasRun = true;
+    document.body.classList.remove('animations-paused');
     initLetterAnimations();
     initFadeObserver();
     initStaggerDelays();
     initPetals();
-    initMusicToggle();
+  }
+
+  /* ── Init ── */
+  document.addEventListener('DOMContentLoaded', function () {
+    preloadPageAssets();
+    initMusicToggle(startPageAnimations);
     initSectionNavigation();
   });
 

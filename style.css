@@ -37,6 +37,7 @@ html {
 
 body {
   background:
+    url('assets/seemantham-main-bg.jpg') center top / cover fixed,
     radial-gradient(circle at 20% 10%, rgba(201, 154, 55, 0.24), transparent 28rem),
     linear-gradient(135deg, #20140c 0%, #44200f 45%, #713021 100%);
   color: var(--text-cream);
@@ -87,7 +88,6 @@ body::before {
   background-image: url('assets/seemantham-main-bg.jpg');
   background-size: cover;
   background-position: center top;
-  filter: saturate(1.04) contrast(0.95) brightness(1.02);
   pointer-events: none;
   z-index: 0;
 }
@@ -121,7 +121,6 @@ body::before {
     0 26px 80px rgba(64, 29, 13, 0.28),
     0 0 0 8px rgba(255, 246, 223, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.62);
-  backdrop-filter: blur(8px);
   overflow: hidden;
 }
 
@@ -230,6 +229,21 @@ body::before {
   padding-top: clamp(1.55rem, 5vw, 2.35rem);
   padding-bottom: clamp(1.55rem, 5vw, 2.35rem);
   animation: invitationOpen 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+body.animations-paused #hero .hero-card,
+body.animations-paused #hero .hero-card::before,
+body.animations-paused #hero .hero-card::after,
+body.animations-paused #hero .hero-ganesha,
+body.animations-paused #hero .hero-leaf-divider,
+body.animations-paused .rs-monogram-img,
+body.animations-paused .letter {
+  animation: none;
+}
+
+body.animations-paused #hero .hero-card {
+  opacity: 0;
+  transform: translateY(26px) scale(0.965);
 }
 
 #hero .hero-card::before,
@@ -665,7 +679,6 @@ body::before {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   box-shadow: 0 14px 34px rgba(35, 21, 10, 0.28);
-  backdrop-filter: blur(12px);
   cursor: pointer;
   transition: transform 0.18s ease, background-color 0.25s ease, box-shadow 0.25s ease;
 }
@@ -696,7 +709,6 @@ body::before {
   background:
     radial-gradient(circle at 50% 32%, rgba(255, 247, 222, 0.42), transparent 34%),
     rgba(34, 20, 12, 0.52);
-  backdrop-filter: blur(10px);
   opacity: 1;
   visibility: visible;
   transition: opacity 0.35s ease, visibility 0.35s ease;

@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rushmithaa's Seemantham</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" /></noscript>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -14,13 +15,13 @@
     rel="stylesheet" />
 </head>
 
-<body>
+<body class="animations-paused">
   <button class="music-toggle" type="button" aria-pressed="false" aria-label="Play background music">
     <span class="music-toggle-icon" aria-hidden="true">♪</span>
     <span class="music-toggle-text">Music</span>
   </button>
 
-  <audio id="ceremony-music" src="music/background.mp3" preload="auto" loop></audio>
+  <audio id="ceremony-music" src="music/background.mp3" preload="none" loop></audio>
 
   <div class="sound-consent" role="dialog" aria-modal="true" aria-labelledby="sound-consent-title">
     <div class="sound-consent-card">
@@ -77,11 +78,11 @@
     <div class="hero-card">
       <p class="hero-eyebrow letter-animate" data-animate-text="Please Join Us For Our">Please Join Us For Our</p>
 
-      <img class="hero-leaf-divider flip-y" src="assets/leaves-vines.png" alt="" aria-hidden="true" />
+      <img class="hero-leaf-divider flip-y" src="assets/leaves-vines.png" alt="" aria-hidden="true" loading="lazy" decoding="async" />
 
       <h1 class="hero-heading letter-animate" data-animate-text="Rushmithaa's|Seemantham|Ceremony">Rushmithaa's<br />Seemantham<br />Ceremony</h1>
 
-      <img class="hero-leaf-divider" src="assets/leaves-vines.png" alt="" aria-hidden="true" />
+      <img class="hero-leaf-divider" src="assets/leaves-vines.png" alt="" aria-hidden="true" loading="lazy" decoding="async" />
     </div>
   </section>
 
@@ -97,13 +98,13 @@
       <!-- TODO: confirm mom's name -->
       <h2 class="hero-heading letter-animate" data-animate-text="Rushmithaa Sai">Rushmithaa Sai</h2>
 
-      <img class="baby-feet" src="assets/footprints.png" alt="Baby footprints" />
+      <img class="baby-feet" src="assets/footprints.png" alt="Baby footprints" loading="lazy" decoding="async" />
 
       <p class="hero-eyebrow letter-animate" data-animate-text="Dad To Be">Dad To Be</p>
       <!-- TODO: confirm dad's name -->
       <h2 class="hero-heading letter-animate" data-animate-text="Samhith">Samhith</h2>
 
-      <img class="hero-couple" src="assets/couple.png" alt="Expectant couple" loading="lazy" />
+      <img class="hero-couple" src="assets/couple.png" alt="Expectant couple" loading="lazy" decoding="async" />
     </div>
   </section>
 
