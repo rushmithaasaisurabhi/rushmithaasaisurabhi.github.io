@@ -14,6 +14,21 @@
 </head>
 
 <body>
+  <button class="music-toggle" type="button" aria-pressed="false" aria-label="Play background music">
+    <span class="music-toggle-icon" aria-hidden="true">♪</span>
+    <span class="music-toggle-text">Music</span>
+  </button>
+
+  <audio id="ceremony-music" src="music/background.mp3" preload="none" loop></audio>
+
+  <nav class="section-nav" aria-label="Section navigation">
+    <button class="section-nav-btn" type="button" data-section-nav="prev" aria-label="Go to previous section">
+      <span aria-hidden="true">⌃</span>
+    </button>
+    <button class="section-nav-btn" type="button" data-section-nav="next" aria-label="Go to next section">
+      <span aria-hidden="true">⌄</span>
+    </button>
+  </nav>
 
   <!-- ══════════════════════════════════════════════════════
        SECTION 1 — Invitation Card (HD photo background + text overlay)
@@ -28,80 +43,111 @@
     <div class="hero-card">
       <img class="hero-ganesha" src="assets/ganesh.svg" alt="Lord Ganesha" width="120" height="149" />
 
-      <p class="hero-eyebrow">Please Join Us For Our</p>
+      <p class="hero-blessing letter-animate" data-animate-text="Our Little Blessing|On The Way">Our Little Blessing<br />On The Way</p>
 
-      <h1 class="hero-heading">Seemantham Ceremony</h1>
+      <div class="rs-monogram" aria-label="R and S floral monogram">
+        <img class="rs-monogram-img" src="assets/rs-monogram.png" alt="S and R floral monogram" width="698" height="664" />
+      </div>
 
-      <img class="hero-leaf-divider flip-y" src="assets/leaves-vines.png" alt="" aria-hidden="true" />
-
-      <p class="hero-blessing">Our Little Blessing<br />On The Way</p>
-
-      <img class="hero-leaf-divider" src="assets/leaves-vines.png" alt="" aria-hidden="true" />
+      <p class="hero-hashtag letter-animate" data-animate-text="#SamRushi">#SamRushi</p>
 
     </div>
   </section>
 
   <!-- ══════════════════════════════════════════════════════
-       SECTION 2 — Parents to be (same theme)
+       SECTION 2 — Invitation Title
+  ══════════════════════════════════════════════════════ -->
+  <section id="invitation-title" class="section hero-section">
+    <div class="hero-photo-bg" aria-hidden="true"></div>
+    <div class="hero-bg-overlay" aria-hidden="true"></div>
+
+    <div class="hero-card">
+      <p class="hero-eyebrow letter-animate" data-animate-text="Please Join Us For Our">Please Join Us For Our</p>
+
+      <img class="hero-leaf-divider flip-y" src="assets/leaves-vines.png" alt="" aria-hidden="true" />
+
+      <h1 class="hero-heading letter-animate" data-animate-text="Rushmithaa's|Seemantham|Ceremony">Rushmithaa's<br />Seemantham<br />Ceremony</h1>
+
+      <img class="hero-leaf-divider" src="assets/leaves-vines.png" alt="" aria-hidden="true" />
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 3 — Parents to be (same theme)
   ══════════════════════════════════════════════════════ -->
   <section id="parents" class="section hero-section">
     <div class="hero-photo-bg" aria-hidden="true"></div>
     <div class="hero-bg-overlay" aria-hidden="true"></div>
 
     <div class="hero-card">
-      <p class="hero-eyebrow">Mom To Be</p>
+      <p class="hero-eyebrow letter-animate" data-animate-text="Mom To Be">Mom To Be</p>
       <!-- TODO: confirm mom's name -->
-      <h2 class="hero-heading">Rushmithaa Sai</h2>
+      <h2 class="hero-heading letter-animate" data-animate-text="Rushmithaa Sai">Rushmithaa Sai</h2>
 
       <img class="baby-feet" src="assets/footprints.png" alt="Baby footprints" />
 
-      <p class="hero-eyebrow">Dad To Be</p>
+      <p class="hero-eyebrow letter-animate" data-animate-text="Dad To Be">Dad To Be</p>
       <!-- TODO: confirm dad's name -->
-      <h2 class="hero-heading">Samhith</h2>
+      <h2 class="hero-heading letter-animate" data-animate-text="Samhith">Samhith</h2>
 
       <img class="hero-couple" src="assets/couple.png" alt="Expectant couple" loading="lazy" />
     </div>
   </section>
 
   <!-- ══════════════════════════════════════════════════════
-       SECTION 3 — Date, Venue & RSVP (same theme)
+       SECTION 4 — Date, Venue & RSVP (same theme)
   ══════════════════════════════════════════════════════ -->
   <section id="details" class="section hero-section">
     <div class="hero-photo-bg" aria-hidden="true"></div>
     <div class="hero-bg-overlay" aria-hidden="true"></div>
 
     <div class="hero-card">
-      <p class="event-month">October</p>
-      <p class="event-day">2</p>
-      <p class="event-year">2026</p>
+      <p class="hero-eyebrow letter-animate" data-animate-text="Save the Date">Save the Date</p>
 
-      <div class="event-meta">
-        <span>Friday</span>
-        <span class="event-meta-sep" aria-hidden="true"></span>
-        <span>10:00 AM</span>
-      </div>
+      <p class="elegant-quote details-quote letter-animate" data-animate-text="Your presence and blessings will make|this moment eternally special.">Your presence and blessings will make<br />this moment eternally special.</p>
 
       <img class="hero-leaf-divider" src="assets/leaves-vines.png" alt="" aria-hidden="true" />
 
-      <p class="event-venue">104 Lerner Ct,<br />Spartanburg, SC 29301</p>
+      <p class="event-date-line letter-animate" data-animate-text="October 2, 2026">October 2, 2026</p>
 
-      <a class="rsvp-btn" href="#rsvp">RSVP</a>
+      <div class="event-meta">
+        <span class="letter-animate" data-animate-text="Friday">Friday</span>
+        <span class="event-meta-sep" aria-hidden="true"></span>
+        <span class="event-time">
+          <span class="event-time-main letter-animate" data-animate-text="09:00AM">09:00AM</span>
+          <span class="event-time-onwards letter-animate" data-animate-text="Onwards">Onwards</span>
+        </span>
+      </div>
     </div>
   </section>
 
   <!-- ══════════════════════════════════════════════════════
-       SECTION 4 — Save the Date (same theme)
+       SECTION 5 — Venue & RSVP
   ══════════════════════════════════════════════════════ -->
-  <section id="savethedate" class="section hero-section">
+  <section id="venue" class="section hero-section">
     <div class="hero-photo-bg" aria-hidden="true"></div>
     <div class="hero-bg-overlay" aria-hidden="true"></div>
 
     <div class="hero-card">
-      <p class="hero-eyebrow">Save the Date</p>
+      <p class="hero-eyebrow letter-animate" data-animate-text="Venue">Venue</p>
 
       <img class="hero-leaf-divider" src="assets/leaves-vines.png" alt="" aria-hidden="true" />
 
-      <p class="elegant-quote">Your presence and blessings will make this moment eternally special.</p>
+      <div class="venue-block">
+        <p class="event-venue letter-animate" data-animate-text="104 Lerner Ct,|Spartanburg, SC 29301">104 Lerner Ct,<br />Spartanburg, SC 29301</p>
+        <a
+          class="directions-link"
+          href="https://www.google.com/maps/dir/?api=1&destination=104%20Lerner%20Ct%2C%20Spartanburg%2C%20SC%2029301"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Get directions to 104 Lerner Court in Spartanburg"
+        >
+          <span class="directions-icon" aria-hidden="true"></span>
+          <span class="letter-animate" data-animate-text="click for directions">click for directions</span>
+        </a>
+      </div>
+
+      <a class="rsvp-btn letter-animate" href="https://forms.gle/w8oPw8Mz7cWkAuaH6" target="_blank" rel="noopener noreferrer" data-animate-text="RSVP">RSVP</a>
     </div>
   </section>
 
