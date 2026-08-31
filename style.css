@@ -78,6 +78,7 @@ body::before {
   background: transparent;
   justify-content: center;
   padding: clamp(1.5rem, 5vw, 3rem) clamp(1rem, 4vw, 2rem);
+  gap: clamp(0.75rem, 2vh, 1.15rem);
 }
 
 
@@ -889,22 +890,42 @@ body.animations-paused #hero .hero-card {
 
 /* ── Scroll cue ── */
 .scroll-cue {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.5rem 1.2rem;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 2.25rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid rgba(201, 154, 55, 0.34);
+  border-radius: 999px;
+  background: rgba(255, 250, 240, 0.62);
   font-family: var(--font-body);
-  font-size: clamp(0.7rem, 2vw, 0.9rem);
-  color: var(--gold-dark);
-  letter-spacing: 0.12em;
-  animation: bob 2.4s ease-in-out infinite;
+  font-size: clamp(0.78rem, 2vw, 0.95rem);
+  font-weight: 700;
+  color: var(--red-accent);
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  box-shadow: 0 10px 28px rgba(64, 29, 13, 0.12);
+  animation: bob 1.85s ease-in-out infinite;
   position: relative;
-  margin-top: 1.25rem;
   z-index: 3;
   flex-shrink: 0;
-  margin-bottom: 0.5rem;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
-.scroll-icon { font-size: 1.1em; }
+
+.scroll-cue:hover,
+.scroll-cue:focus-visible {
+  color: var(--green-deep);
+  border-color: rgba(47, 109, 67, 0.36);
+  background: rgba(255, 250, 240, 0.78);
+}
+
+.scroll-icon {
+  color: var(--gold);
+  font-size: 0.95em;
+  line-height: 1;
+}
 
 @keyframes bob {
   0%, 100% { transform: translateY(0); }
