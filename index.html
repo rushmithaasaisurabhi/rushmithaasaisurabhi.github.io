@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rushmithaa's Seemantham</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -19,14 +20,26 @@
     <span class="music-toggle-text">Music</span>
   </button>
 
-  <audio id="ceremony-music" src="music/background.mp3" preload="none" loop></audio>
+  <audio id="ceremony-music" src="music/background.mp3" preload="auto" loop></audio>
+
+  <div class="sound-consent" role="dialog" aria-modal="true" aria-labelledby="sound-consent-title">
+    <div class="sound-consent-card">
+      <p class="sound-consent-kicker">A Gentle Welcome</p>
+      <h2 id="sound-consent-title">Play background music?</h2>
+      <p>Would you like soft flute music while viewing the invitation?</p>
+      <div class="sound-consent-actions">
+        <button class="sound-consent-yes" type="button">Yes, play music</button>
+        <button class="sound-consent-no" type="button">No, thank you</button>
+      </div>
+    </div>
+  </div>
 
   <nav class="section-nav" aria-label="Section navigation">
     <button class="section-nav-btn" type="button" data-section-nav="prev" aria-label="Go to previous section">
-      <span aria-hidden="true">⌃</span>
+      <i class="fa-solid fa-circle-chevron-up" aria-hidden="true"></i>
     </button>
     <button class="section-nav-btn" type="button" data-section-nav="next" aria-label="Go to next section">
-      <span aria-hidden="true">⌄</span>
+      <i class="fa-solid fa-circle-chevron-down" aria-hidden="true"></i>
     </button>
   </nav>
 

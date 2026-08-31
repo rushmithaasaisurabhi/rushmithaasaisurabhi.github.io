@@ -164,6 +164,9 @@
   function initMusicToggle() {
     var button = document.querySelector('.music-toggle');
     var audio = document.getElementById('ceremony-music');
+    var consent = document.querySelector('.sound-consent');
+    var consentYes = document.querySelector('.sound-consent-yes');
+    var consentNo = document.querySelector('.sound-consent-no');
     if (!button) return;
 
     var audioContext = null;
@@ -248,7 +251,18 @@
       });
     }
 
+    function hideConsent() {
+      if (!consent) return;
+      consent.classList.add('is-hidden');
+      consent.setAttribute('aria-hidden', 'true');
+      window.setTimeout(function () {
+        consent.remove();
+      }, 400);
+    }
+
     button.addEventListener('click', function () {
+      hideConsent();
+
       if (usingSynth && synthPlaying) {
         stopSynth();
         return;
@@ -269,6 +283,23 @@
       });
       audio.addEventListener('ended', function () {
         if (!usingSynth) setPlaying(false);
+      });
+    }
+
+    if (consentYes) {
+      consentYes.addEventListener('click', function () {
+        playAudioOrFallback();
+        hideConsent();
+      });
+    }
+
+    if (consentNo) {
+      consentNo.addEventListener('click', hideConsent);
+    }
+
+    if (consent) {
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') hideConsent();
       });
     }
   }
