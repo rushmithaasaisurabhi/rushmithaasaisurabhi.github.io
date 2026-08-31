@@ -1,0 +1,807 @@
+/* ═══════════════════════════════════════════════════════════
+   Seemantham Invitation — Style Sheet
+   Palette: deep warm darks + gold accents
+═══════════════════════════════════════════════════════════ */
+
+/* ── Custom properties ── */
+:root {
+  --gold:          #d4a843;
+  --gold-light:    #f7d26a;
+  --gold-dark:     #9c7320;
+  --deep-bg:       #1a0e00;
+  --section-bg:    #2a1500;
+  --scroll-bg:     #3d1f00;
+  --text-cream:    #f5e6c8;
+  --text-warm:     #e8d5a8;
+  --red-accent:    #8b0000;
+  --font-display:  'Cinzel Decorative', serif;
+  --font-body:     'Cormorant Garamond', 'Noto Serif', Georgia, serif;
+  --section-pad:   clamp(2rem, 6vw, 5rem);
+}
+
+/* ── Reset & base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  font-size: 16px;
+}
+
+body {
+  background: var(--deep-bg);
+  color: var(--text-cream);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Generic section ── */
+.section {
+  min-height: 100svh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ════════════════════════════════════════════
+   SECTION 1 — HERO / INVITATION CARD
+════════════════════════════════════════════ */
+.hero-section {
+  background: #f7efdc;
+  justify-content: center;
+  padding: clamp(1.5rem, 5vw, 3rem) clamp(1rem, 4vw, 2rem);
+}
+
+
+/* ── HD realistic floral photo background (Wikimedia Commons, hotlink-permitted) ── */
+.hero-photo-bg {
+  position: fixed;
+  inset: 0;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/62/Marigold_%28420117891%29.jpg');
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Cream veil to keep overlaid text readable */
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(247,239,220,0.72) 0%, rgba(247,239,220,0.88) 55%, rgba(240,226,194,0.94) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Invitation card ── */
+.hero-card {
+  position: relative;
+  z-index: 3;
+  width: min(92vw, 560px);
+  text-align: center;
+  padding: clamp(2rem, 7vw, 3.5rem) clamp(1.25rem, 6vw, 3rem);
+  background: rgba(252, 247, 235, 0.82);
+  border: 2px solid var(--gold);
+  outline: 1px solid rgba(212,168,67,0.5);
+  outline-offset: 6px;
+  border-radius: 6px;
+  box-shadow: 0 18px 50px rgba(60, 30, 0, 0.18);
+}
+
+.hero-ganesha {
+  display: block;
+  width: clamp(84px, 24vw, 128px);
+  height: auto;
+  margin: 0 auto clamp(1rem, 4vw, 1.75rem);
+}
+
+.hero-eyebrow {
+  font-family: var(--font-body);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: clamp(1.5rem, 3.4vw, 1.35rem);
+  color: #2e6b2e;
+  line-height: 1.4;
+}
+
+.hero-heading {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 9vw, 3.6rem);
+  color: var(--red-accent);
+  line-height: 1.1;
+  margin: clamp(0.6rem, 2.5vw, 1rem) 0;
+}
+
+.hero-leaf-divider {
+  display: block;
+  width: clamp(160px, 55%, 260px);
+  width: 120px;
+  height: auto;
+  margin: clamp(1rem, 4vw, 1.6rem) auto;
+}
+
+.hero-leaf-divider.flip-y {
+  transform: scaleY(-1);
+}
+
+.hero-blessing {
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: clamp(1.3rem, 5vw, 1.9rem);
+  color: var(--red-accent);
+  line-height: 1.35;
+}
+
+.hero-honoree {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 4.4vw, 1.7rem);
+  color: var(--gold-dark);
+  letter-spacing: 0.06em;
+  margin-top: clamp(0.5rem, 2vw, 0.9rem);
+}
+
+.hero-couple {
+  display: block;
+  height: auto;
+  height: clamp(160px, 40vw, 240px);
+  margin: clamp(1.2rem, 4vw, 1.8rem) auto 0;
+}
+
+.baby-feet {
+  display: block;
+  width: clamp(56px, 20vw, 84px);
+  height: auto;
+  margin: clamp(1.1rem, 4.5vw, 1.8rem) auto;
+}
+
+/* ── Event date / venue ── */
+.event-month,
+.event-day,
+.event-year {
+  font-family: var(--font-body);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #2e6b2e;
+  line-height: 1.15;
+}
+.event-month { font-size: clamp(1.6rem, 6.5vw, 2.6rem); }
+.event-day   { font-size: clamp(1.9rem, 8vw, 3rem); }
+.event-year  { font-size: clamp(1.4rem, 5.5vw, 2.1rem); }
+
+.event-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 5vw, 2rem);
+  margin: clamp(1rem, 4vw, 1.6rem) 0;
+  padding: 0.6rem 0;
+  border-top: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: clamp(0.95rem, 3.2vw, 1.2rem);
+  color: #2e6b2e;
+}
+.event-meta-sep {
+  width: 1px;
+  align-self: stretch;
+  background: var(--gold);
+}
+
+.event-venue {
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: clamp(1.05rem, 4vw, 1.4rem);
+  color: var(--red-accent);
+  line-height: 1.5;
+  margin-top: clamp(0.4rem, 2vw, 0.8rem);
+}
+
+/* ── RSVP button (themed) ── */
+.rsvp-btn {
+  display: inline-block;
+  margin: clamp(1.4rem, 5vw, 2rem) auto 0;
+  padding: 0.7em 2.4em;
+  font-family: var(--font-body);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
+  color: var(--red-accent);
+  text-decoration: none;
+  background: rgba(252, 247, 235, 0.6);
+  border: 1.5px solid var(--gold);
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgba(212,168,67,0.4), 0 6px 18px rgba(60,30,0,0.12);
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.15s ease;
+}
+.rsvp-btn:hover,
+.rsvp-btn:focus-visible {
+  background: var(--gold);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.std-closing {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(0.95rem, 3.2vw, 1.2rem);
+  color: var(--gold-dark);
+  line-height: 1.6;
+  margin-top: clamp(1rem, 4vw, 1.6rem);
+}
+
+/* Save-the-Date is sparse — size it to its content instead of a full
+   viewport so it sits closer to the section above it */
+#savethedate {
+  min-height: auto;
+  padding-top: clamp(2rem, 7vw, 4rem);
+  padding-bottom: clamp(2rem, 7vw, 4rem);
+}
+
+/* ── Elegant italic quote ── */
+.elegant-quote {
+  position: relative;
+  max-width: 30ch;
+  margin: clamp(1rem, 4vw, 1.75rem) auto 0;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.35rem, 5.2vw, 2.1rem);
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  color: var(--red-accent);
+}
+.elegant-quote::before,
+.elegant-quote::after {
+  content: '\201C';
+  color: var(--gold);
+  font-size: 1.6em;
+  line-height: 0;
+  vertical-align: -0.35em;
+  opacity: 0.7;
+}
+.elegant-quote::before { margin-right: 0.08em; }
+.elegant-quote::after {
+  content: '\201D';
+  margin-left: 0.06em;
+}
+
+/* ── Scroll cue ── */
+.scroll-cue {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1.2rem;
+  font-family: var(--font-body);
+  font-size: clamp(0.7rem, 2vw, 0.9rem);
+  color: var(--gold-dark);
+  letter-spacing: 0.12em;
+  animation: bob 2.4s ease-in-out infinite;
+  position: relative;
+  margin-top: 1.25rem;
+  z-index: 3;
+  flex-shrink: 0;
+  margin-bottom: 0.5rem;
+}
+.scroll-icon { font-size: 1.1em; }
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+/* ════════════════════════════════════════════
+   SECTION 2 — INVITATION SCROLL
+════════════════════════════════════════════ */
+.invitation-section {
+  background: linear-gradient(180deg, #1a0a00 0%, #2a1200 40%, #1a0a00 100%);
+  padding: var(--section-pad) clamp(1rem, 4vw, 1rem);
+  justify-content: center;
+  position: relative;
+}
+
+.inv-photo-bg {
+  position: absolute;
+  inset: 0;
+  /* TODO: replace with actual image URL */
+  /* background-image: url('PLACEHOLDER_IMAGE_URL'); */
+  background-size: cover;
+  background-position: center;
+  opacity: 0.10;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.scroll-bg {
+  width: 100%;
+  max-width: 640px;
+  background: linear-gradient(180deg, #3d1f00 0%, #2e1600 50%, #3d1f00 100%);
+  border: 1.5px solid var(--gold-dark);
+  border-radius: 8px;
+  box-shadow:
+    0 0 0 1px rgba(212,168,67,0.12),
+    0 4px 40px rgba(0,0,0,0.6),
+    inset 0 0 80px rgba(212,168,67,0.04);
+  position: relative;
+}
+
+.scroll-curl {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+.scroll-curl svg {
+  display: block;
+  width: 100%;
+  height: 52px;
+}
+
+.invitation-body {
+  padding: 0.5rem clamp(1.5rem, 6vw, 3.5rem) 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+/* ── Gold divider ── */
+.gold-divider svg {
+  display: block;
+  width: clamp(260px, 80%, 500px);
+  height: 24px;
+}
+.gold-divider.sm svg { height: 16px; }
+
+/* ── Invocation ── */
+.inv-invocation {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  margin-bottom: -0.5rem;
+}
+.inv-invocation-roman {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(0.7rem, 2vw, 0.85rem);
+  color: var(--text-warm);
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+}
+
+/* ── Invitation text ── */
+.inv-opening {
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  font-style: italic;
+  color: var(--text-warm);
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+.inv-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 6vw, 3rem);
+  color: var(--gold-light);
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 12px rgba(247,210,106,0.35);
+  line-height: 1.1;
+}
+
+.inv-subtitle {
+  font-style: italic;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  color: var(--text-warm);
+  letter-spacing: 0.1em;
+  margin-top: -0.5rem;
+  opacity: 0.85;
+}
+
+.inv-for {
+  font-style: italic;
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  color: var(--text-warm);
+  opacity: 0.85;
+}
+
+.inv-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 4.5vw, 2rem);
+  color: var(--gold);
+  letter-spacing: 0.06em;
+}
+
+.inv-relation {
+  font-style: italic;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  color: var(--text-warm);
+  opacity: 0.85;
+}
+.inv-spouse {
+  color: var(--gold-light);
+  font-style: normal;
+}
+
+/* ── Details card ── */
+.details-card {
+  width: 100%;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(212,168,67,0.3);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.50rem;
+}
+
+.detail-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.detail-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-text {
+  text-align: left;
+}
+
+.detail-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  opacity: 0.75;
+  margin-bottom: 0.15rem;
+}
+
+.detail-value {
+  font-size: clamp(0.9rem, 2.8vw, 1.05rem);
+  color: var(--text-cream);
+  line-height: 1.45;
+}
+.detail-value sup {
+  font-size: 0.65em;
+}
+
+/* ── Families ── */
+.families-block {
+  width: 100%;
+  text-align: center;
+}
+
+.families-intro {
+  font-style: italic;
+  font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+  color: var(--text-warm);
+  opacity: 0.85;
+  margin-bottom: 0.8rem;
+}
+
+.families-grid {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.family-col {
+  flex: 1;
+  max-width: 180px;
+}
+
+.family-role {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  opacity: 0.75;
+  margin-bottom: 0.3rem;
+}
+
+.family-names {
+  font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+  color: var(--text-cream);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.family-divider {
+  font-size: 1.2rem;
+  color: var(--gold);
+  padding-top: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* ── Blessing verse ── */
+.blessing-verse {
+  font-style: italic;
+  font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+  color: var(--text-warm);
+  line-height: 1.8;
+  opacity: 0.8;
+  max-width: 420px;
+  border-left: 2px solid var(--gold-dark);
+  border-right: 2px solid var(--gold-dark);
+  padding: 0.5rem 1rem;
+}
+
+/* ════════════════════════════════════════════
+   SECTION 3 — SAVE THE DATE
+════════════════════════════════════════════ */
+.savedate-section {
+  background: radial-gradient(ellipse at 50% 40%, #2a0e00 0%, #150800 70%, #0a0300 100%);
+  justify-content: flex-start;
+  gap: 0;
+}
+
+.std-photo-bg {
+  position: absolute;
+  inset: 0;
+  /* TODO: replace with actual image URL */
+  /* background-image: url('PLACEHOLDER_IMAGE_URL'); */
+  background-size: cover;
+  background-position: center;
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.std-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(212,168,67,0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ── Lotus background ── */
+.lotus-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.lotus-bg-svg {
+  width: 90%;
+  max-width: 500px;
+  height: auto;
+  opacity: 0.35;
+}
+
+/* ── Std lamps ── */
+.std-lamps {
+  width: 100%;
+  max-width: 480px;
+  padding: 1rem 1rem 0;
+  z-index: 2;
+}
+.std-lamps svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Couple scene ── */
+.couple-scene {
+  z-index: 2;
+  width: clamp(250px, 80vw, 400px);
+}
+.couple-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 8px 32px rgba(212,168,67,0.28));
+}
+
+/* ── STD content ── */
+.std-content {
+  z-index: 2;
+  text-align: center;
+  padding: 0 clamp(1.5rem, 6vw, 2rem) 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.std-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.std-ornament {
+  font-size: 1.4rem;
+  color: var(--gold);
+  opacity: 0.7;
+}
+
+.std-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 6vw, 3rem);
+  color: var(--gold-light);
+  letter-spacing: 0.08em;
+  text-shadow: 0 2px 20px rgba(247,210,106,0.4);
+}
+
+.std-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.std-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 4vw, 1.75rem);
+  color: var(--gold);
+  letter-spacing: 0.06em;
+}
+
+.std-and {
+  font-style: italic;
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  color: var(--text-warm);
+  opacity: 0.8;
+}
+
+.std-date-block {
+  margin-top: 0.4rem;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(212,168,67,0.35);
+  border-radius: 8px;
+  padding: 0.8rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.std-date-label {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 3.5vw, 1.4rem);
+  color: var(--gold-light);
+  letter-spacing: 0.06em;
+}
+.std-date-label sup { font-size: 0.65em; }
+
+.std-time,
+.std-venue {
+  font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+  color: var(--text-warm);
+  opacity: 0.9;
+}
+.std-venue { font-style: italic; }
+
+.std-closing {
+  font-style: italic;
+  font-size: clamp(0.8rem, 2.5vw, 0.92rem);
+  color: var(--text-warm);
+  opacity: 0.75;
+  max-width: 360px;
+  line-height: 1.7;
+}
+
+.std-kolam svg {
+  display: block;
+  width: clamp(200px, 70vw, 280px);
+  height: auto;
+  opacity: 0.55;
+}
+
+/* ════════════════════════════════════════════
+   FLOWERS & LEAVES FALLING ANIMATION
+════════════════════════════════════════════ */
+#petals-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.petal {
+  position: absolute;
+  top: -60px;
+  border-radius: 50% 50% 50% 0;
+  opacity: 0;
+  animation: petalFall linear infinite;
+}
+
+.petal.rose      { background: radial-gradient(ellipse at 40% 30%, #f9b0c0, #c0392b); }
+.petal.marigold  { background: radial-gradient(ellipse at 40% 30%, #ffe066, #e8891a); }
+.petal.jasmine   { background: radial-gradient(ellipse at 40% 30%, #fffbe8, #f0d080); border-radius: 50%; }
+.petal.leaf      {
+  background: linear-gradient(135deg, #4aaa28 0%, #2e6b15 60%, #1a4a0a 100%);
+  border-radius: 0 50% 50% 50%;
+}
+
+@keyframes petalFall {
+  0%   { transform: rotate(var(--rotate-offset, 0deg)) translateY(0) rotate(0deg) scale(0.8); opacity: 0; }
+  5%   { opacity: 0.85; }
+  80%  { opacity: 0.7; }
+  100% { transform: rotate(var(--rotate-offset, 0deg)) translateY(110vh) rotate(720deg) scale(1.1); opacity: 0; }
+}
+
+/* ════════════════════════════════════════════
+   SCROLL ANIMATIONS (Intersection Observer)
+════════════════════════════════════════════ */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ════════════════════════════════════════════
+   RESPONSIVE TWEAKS
+════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .families-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .family-divider { display: none; }
+
+  .banana-bunch {
+    width: 60px;
+    bottom: 80px;
+  }
+}
+
+@media (min-width: 768px) {
+  html { font-size: 17px; }
+
+  .throne-scene  { width: min(360px, 55vw); }
+  .couple-scene  { width: min(420px, 65vw); }
+  .garland-arch  { width: min(460px, 65vw); }
+
+  .details-card  { padding: 1.5rem 2rem; }
+}
+
+@media (min-width: 1024px) {
+  html { scroll-snap-type: none; }
+  .section { min-height: 100vh; }
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .scroll-cue { animation: none; }
+  .fade-up { transition: none; }
+  .petal { animation: none; display: none; }
+}

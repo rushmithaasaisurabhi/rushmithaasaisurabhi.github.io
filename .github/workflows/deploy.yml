@@ -1,0 +1,67 @@
+# ══════════════════════════════════════════════════════════
+# GitHub Pages CI/CD — Deploy static site
+# ══════════════════════════════════════════════════════════
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# Minimal default permissions — elevated only where needed
+permissions:
+  contents: read
+
+# Allow only one concurrent deployment
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+
+  # ── CI: basic validation (runs on PRs and pushes) ─────
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check required files exist
+        run: |
+          test -f index.html && echo "✅ index.html present" || (echo "❌ index.html missing" && exit 1)
+          test -f style.css  && echo "✅ style.css present"  || (echo "❌ style.css missing"  && exit 1)
+          test -f app.js     && echo "✅ app.js present"     || (echo "❌ app.js missing"     && exit 1)
+
+  # ── CD: build artifact + deploy (push to main only) ───
+  build-and-deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+    needs: validate
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

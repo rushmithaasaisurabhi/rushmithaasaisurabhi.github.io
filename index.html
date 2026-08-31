@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rushmithaa's Seemantham</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cinzel+Decorative:wght@400;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 1 — Invitation Card (HD photo background + text overlay)
+  ══════════════════════════════════════════════════════ -->
+  <section id="hero" class="section hero-section">
+    <!-- HD realistic floral background (free, hotlink-permitted — Wikimedia Commons) -->
+    <div class="hero-photo-bg" aria-hidden="true"></div>
+    <!-- Cream veil so the overlaid text stays legible -->
+    <div class="hero-bg-overlay" aria-hidden="true"></div>
+
+    <!-- Invitation card -->
+    <div class="hero-card">
+      <img class="hero-ganesha" src="assets/ganesh.svg" alt="Lord Ganesha" width="120" height="149" />
+
+      <p class="hero-eyebrow">Please Join Us For Our</p>
+
+      <h1 class="hero-heading">Seemantham Ceremony</h1>
+
+      <img class="hero-leaf-divider flip-y" src="assets/leaves-vines.png" alt="" aria-hidden="true" />
+
+      <p class="hero-blessing">Our Little Blessing<br />On The Way</p>
+
+      <img class="hero-leaf-divider" src="assets/leaves-vines.png" alt="" aria-hidden="true" />
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 2 — Parents to be (same theme)
+  ══════════════════════════════════════════════════════ -->
+  <section id="parents" class="section hero-section">
+    <div class="hero-photo-bg" aria-hidden="true"></div>
+    <div class="hero-bg-overlay" aria-hidden="true"></div>
+
+    <div class="hero-card">
+      <p class="hero-eyebrow">Mom To Be</p>
+      <!-- TODO: confirm mom's name -->
+      <h2 class="hero-heading">Rushmithaa Sai</h2>
+
+      <img class="baby-feet" src="assets/footprints.png" alt="Baby footprints" />
+
+      <p class="hero-eyebrow">Dad To Be</p>
+      <!-- TODO: confirm dad's name -->
+      <h2 class="hero-heading">Samhith</h2>
+
+      <img class="hero-couple" src="assets/couple.png" alt="Expectant couple" loading="lazy" />
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 3 — Date, Venue & RSVP (same theme)
+  ══════════════════════════════════════════════════════ -->
+  <section id="details" class="section hero-section">
+    <div class="hero-photo-bg" aria-hidden="true"></div>
+    <div class="hero-bg-overlay" aria-hidden="true"></div>
+
+    <div class="hero-card">
+      <p class="event-month">October</p>
+      <p class="event-day">2</p>
+      <p class="event-year">2026</p>
+
+      <div class="event-meta">
+        <span>Friday</span>
+        <span class="event-meta-sep" aria-hidden="true"></span>
+        <span>10:00 AM</span>
+      </div>
+
+      <img class="hero-leaf-divider" src="assets/leaves-vines.png" alt="" aria-hidden="true" />
+
+      <p class="event-venue">104 Lerner Ct,<br />Spartanburg, SC 29301</p>
+
+      <a class="rsvp-btn" href="#rsvp">RSVP</a>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 4 — Save the Date (same theme)
+  ══════════════════════════════════════════════════════ -->
+  <section id="savethedate" class="section hero-section">
+    <div class="hero-photo-bg" aria-hidden="true"></div>
+    <div class="hero-bg-overlay" aria-hidden="true"></div>
+
+    <div class="hero-card">
+      <p class="hero-eyebrow">Save the Date</p>
+
+      <img class="hero-leaf-divider" src="assets/leaves-vines.png" alt="" aria-hidden="true" />
+
+      <p class="elegant-quote">Your presence and blessings will make this moment eternally special.</p>
+    </div>
+  </section>
+
+  <!-- Flower & Leaf Petals Canvas -->
+  <div id="petals-container" aria-hidden="true"></div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
